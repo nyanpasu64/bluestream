@@ -12,7 +12,7 @@
 
 RSS feed generator for [Bluesky](https://bsky.app).
 
-https://bluestream.deno.dev/
+https://r55.bluestream.deno.net/
 
 ## Development
 
