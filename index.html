@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bluestream</title>
-  <meta property="og:url" content="https://r55.bluestream.deno.net/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Bluestream" />
-  <meta property="og:description" content="RSS feed generator for Bluesky." />
-  <meta property="og:site_name" content="Bluestream" />
-  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/twitter/twemoji@13.1.0/assets/72x72/1f233.png" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
-  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@13.1.0/assets/72x72/1f233.png" />
-  <style>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bluestream</title>
+    <meta property="og:url" content="https://r55.bluestream.deno.net/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bluestream" />
+    <meta property="og:description" content="RSS feed generator for Bluesky." />
+    <meta property="og:site_name" content="Bluestream" />
+    <meta property="og:image"
+      content="https://cdn.jsdelivr.net/gh/twitter/twemoji@13.1.0/assets/72x72/1f233.png" />
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
+    <link rel="icon" type="image/png"
+      href="https://cdn.jsdelivr.net/gh/twitter/twemoji@13.1.0/assets/72x72/1f233.png" />
+    <style>
     body {
       text-align: center;
     }
@@ -22,82 +25,86 @@
     #notice {
       border: thick double;
     }
-  </style>
-</head>
+    </style>
+  </head>
 
-<body>
-  <h1>Bluestream</h1>
-  <div id="notice">
-    <p>💡 NOTICE 💡</p>
-    <p>Thank you for accessing this project.</p>
-    <p>
+  <body>
+    <h1>Bluestream</h1>
+    <div id="notice">
+      <p>💡 NOTICE 💡</p>
+      <p>Thank you for accessing this project.</p>
+      <p>
       Because this is used by a large number of users,<br>
       it may stop due to Deno Deploy quota limit.
     </p>
-    <p>
+      <p>
       If you want to recieve RSS feed of your posts, you can use official RSS:<br>
       https://bsky.app/profile/<strong>bsky-handle</strong>/rss
     </p>
-  </div>
-  <div>
-    <p>RSS feed generator for Bluesky.</p>
-    <p>Access to the path /bsky-handle directory or input handle of Bluesky here ↓</p>
-    <form id="form">
-      <div>
-        <input id="input-handle" name="input-handle" aria-label="input-handle" required autofocus placeholder="xxx.bsky.social" />
-        <input type="submit" id="submit-button" name="submit-button" aria-label="submit-button" value="Generate feed" />
-      </div>
-      <div>
+    </div>
+    <div>
+      <p>RSS feed generator for Bluesky.</p>
+      <p>Access to the path /bsky-handle directory or input handle of Bluesky here ↓</p>
+      <form id="form">
         <div>
-          <label>
+          <input id="input-handle" name="input-handle" aria-label="input-handle"
+            required autofocus placeholder="xxx.bsky.social" />
+          <input type="submit" id="submit-button" name="submit-button"
+            aria-label="submit-button" value="Generate feed" />
+        </div>
+        <div>
+          <div>
+            <label>
             <input type="checkbox" id="include-repost" name="include-repost" aria-label="include-repost" /> include raw repost (quote repost is always included)
           </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>
             <input type="checkbox" id="include-reply-context" name="include-reply-context" aria-label="include-reply-context" /> include replied to context (the post replied to)
           </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>
             <input type="checkbox" id="exclude-reply" name="exclude-reply" aria-label="exclude-reply" /> exclude reply posts (posts replying to another)
           </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>
             <input type="checkbox" id="exclude-mention" name="exclude-mention" aria-label="exclude-mention" /> exclude mention (the post that contains <code>@handle</code>)
           </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>
             <input type="checkbox" id="media-full" name="media-full" aria-label="media-full" /> show full media instead of thumbnail (uses more data)
           </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>
             <input type="checkbox" id="include-embed-preview" name="include-embed-preview" aria-label="include-embed-preview" /> include embedded link preview
           </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>
             <input type="checkbox" id="link-psky" name="link-psky" aria-label="link-psky" /> Use psky.app for link (EXPERIMENTAL, useful for readers with link previews)
           </label>
+          </div>
         </div>
-      </div>
-    </form>
-    <p>You can use DID (like <code>did:plc:xxxx</code>) instead of handle.</p>
-    <p>Currently only posts in bsky.social is supported.</p>
-    <p>
-      <a title="https://github.com/kawarimidoll/bluestream" target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/kawarimidoll/bluestream">https://github.com/kawarimidoll/bluestream</a>
-    </p>
-  </div>
-  <script>
+      </form>
+      <p>You can use DID (like <code>did:plc:xxxx</code>) instead of handle.</p>
+      <p>Currently only posts in bsky.social is supported.</p>
+      <p>
+        <a title="https://github.com/kawarimidoll/bluestream" target="_blank"
+          rel="noopener noreferrer nofollow"
+          href="https://github.com/kawarimidoll/bluestream">https://github.com/kawarimidoll/bluestream</a>
+      </p>
+    </div>
+    <script>
     const form = document.getElementById("form");
-    form.addEventListener("submit", event => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
 
       document.getElementById("submit-button").value = "Calculating...";
-      [...document.getElementsByTagName("input")].forEach(e => e.disabled = true);
+      [...document.getElementsByTagName("input")].forEach((e) => e.disabled = true);
 
       const url = new URL(window.location.href);
       url.pathname = document.getElementById("input-handle").value;
@@ -126,11 +133,12 @@
       window.location.href = url.toString();
     });
 
-    window.addEventListener('pageshow', () => {
+    window.addEventListener("pageshow", () => {
       document.getElementById("submit-button").value = "Generate feed";
-      [...document.getElementsByTagName("input")].forEach(e => e.disabled = false);
+      [...document.getElementsByTagName("input")].forEach((e) =>
+        e.disabled = false
+      );
     });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
